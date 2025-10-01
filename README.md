@@ -14,7 +14,7 @@ npm install @bluebulb/nestjs-logstack
 
 ```typescript
 // app.module.ts
-import { LogStackModule } from '@bluebulb/nestjs-logstack';
+import { LogStackModule } from '@dontee-why/nestjs-logstack';
 
 @Module({
   imports: [
