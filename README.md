@@ -101,21 +101,21 @@ app.useGlobalInterceptors(app.get(LogStackInterceptor));
 
 ### Health Checks
 
-```typescript
+<!-- ```typescript
 // Add LogStack to health checks
-// @Controller('health')
-// export class HealthController {
-//   constructor(
-//     private health: HealthCheckService,
-//     private logStackHealth: LogStackHealthIndicator,
-//   ) {}
+@Controller('health')
+export class HealthController {
+  constructor(
+    private health: HealthCheckService,
+    private logStackHealth: LogStackHealthIndicator,
+  ) {}
 
-//   @Get()
-//   @HealthCheck()
-//   check() {
-//     return this.health.check([
-//       () => this.logStackHealth.isHealthy('logstack'),
-//     ]);
-//   }
-// }
-```
+  @Get()
+  @HealthCheck()
+  check() {
+    return this.health.check([
+      () => this.logStackHealth.isHealthy('logstack'),
+    ]);
+  }
+}
+``` -->
