@@ -1,0 +1,32 @@
+{
+  "name": "@dontee-why/nestjs-logstack",
+  "version": "1.0.0",
+  "description": "NestJS integration package for LogStack centralized logging service",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["nestjs", "logging", "logstack", "loki", "observability"],
+  "author": "Bluebulb",
+  "license": "MIT",
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0 || ^10.0.0",
+    "@nestjs/core": "^9.0.0 || ^10.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "dependencies": {
+    "@nestjs/axios": "^3.0.0",
+    "axios": "^1.6.0"
+  },
+  "optionalDependencies": {
+    "@nestjs/terminus": "^10.0.0",
+    "@nestjs/config": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}
