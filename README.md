@@ -99,7 +99,7 @@ interface LogStackConfig {
 app.useGlobalInterceptors(app.get(LogStackInterceptor));
 ```
 
-### Health Checks
+<!-- ### Health Checks -->
 
 <!-- ```typescript
 // Add LogStack to health checks
