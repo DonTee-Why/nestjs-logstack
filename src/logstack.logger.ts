@@ -12,7 +12,7 @@ export class LogStackLogger extends Logger {
   }
 
   setContext(context: string): void {
-    this.context = context;
+    (this as any).context = context;
   }
 
   log(message: any, context?: string, metadata?: Record<string, any>): void {

@@ -21,7 +21,7 @@ export class LogStackInterceptor implements NestInterceptor {
         next: () => {
           this.logRequest(request, response, startTime, 'success');
         },
-        error: (error) => {
+        error: (error: any) => {
           this.logRequest(request, response, startTime, 'error', error);
         },
       }),

@@ -24,7 +24,13 @@
     "url": "https://github.com/DonTee-Why/nestjs-logstack/issues"
   },
   "homepage": "https://github.com/DonTee-Why/nestjs-logstack#readme",
-  "keywords": ["nestjs", "logging", "logstack", "loki", "observability"],
+  "keywords": [
+    "nestjs",
+    "logging",
+    "logstack",
+    "loki",
+    "observability"
+  ],
   "author": "Timilehin Olusegun",
   "license": "MIT",
   "peerDependencies": {
@@ -33,23 +39,24 @@
     "rxjs": "^7.0.0"
   },
   "dependencies": {
+    "@dontee-why/nestjs-logstack": "^1.0.1",
     "@nestjs/axios": "^3.0.0",
     "axios": "^1.6.0"
   },
   "optionalDependencies": {
-    "@nestjs/terminus": "^10.0.0",
-    "@nestjs/config": "^3.0.0"
+    "@nestjs/config": "^3.0.0",
+    "@nestjs/terminus": "^10.0.0"
   },
   "devDependencies": {
+    "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
-    "@nestjs/axios": "^3.0.0",
     "@nestjs/terminus": "^10.0.0",
     "@types/node": "^18.0.0",
-    "typescript": "^5.0.0",
+    "axios": "^1.6.0",
     "rimraf": "^5.0.0",
     "rxjs": "^7.0.0",
-    "axios": "^1.6.0"
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=16.0.0"
