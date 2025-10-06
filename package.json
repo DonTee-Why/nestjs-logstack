@@ -1,16 +1,31 @@
 {
   "name": "@dontee-why/nestjs-logstack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NestJS integration package for LogStack centralized logging service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "build:watch": "tsc --watch",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonTee-Why/nestjs-logstack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DonTee-Why/nestjs-logstack/issues"
+  },
+  "homepage": "https://github.com/DonTee-Why/nestjs-logstack#readme",
   "keywords": ["nestjs", "logging", "logstack", "loki", "observability"],
-  "author": "Bluebulb",
+  "author": "Timilehin Olusegun",
   "license": "MIT",
   "peerDependencies": {
     "@nestjs/common": "^9.0.0 || ^10.0.0",
@@ -27,6 +42,13 @@
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
