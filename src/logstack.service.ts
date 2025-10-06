@@ -17,7 +17,6 @@ export class LogStackService {
 
   async log(entry: LogEntry): Promise<void> {
     if (this.config.async !== false) {
-      // Fire and forget
       this.sendToLogStack(entry).catch((error) => {
         this.handleLogError(error, entry);
       });
@@ -53,7 +52,6 @@ export class LogStackService {
 
   private async sendToLogStack(entry: LogEntry): Promise<void> {
     this.stats.totalLogs++;
-
     const request: IngestRequest = {
       entries: [entry],
     };

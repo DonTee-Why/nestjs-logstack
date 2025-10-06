@@ -27,11 +27,11 @@ export class LogStackHealthIndicator extends HealthIndicator {
           }),
         );
       }
-    } catch (error) {
+    } catch (error: any) {
       throw new HealthCheckError(
         'LogStack health check failed',
         this.getStatus(key, false, {
-          message: error.message,
+          message: error?.message || 'Unknown error',
         }),
       );
     }

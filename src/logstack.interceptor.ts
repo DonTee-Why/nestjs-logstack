@@ -63,8 +63,9 @@ export class LogStackInterceptor implements NestInterceptor {
 
     // Extract DataDog trace info if available
     try {
-      if (typeof global !== 'undefined' && global.dd && global.dd.trace) {
-        const span = global.dd.trace.getActiveSpan();
+      const globalAny = global as any;
+      if (globalAny?.dd?.trace) {
+        const span = globalAny.dd.trace.getActiveSpan();
         if (span && span.context) {
           entry.trace_id = span.context().toTraceId();
           entry.span_id = span.context().toSpanId();
