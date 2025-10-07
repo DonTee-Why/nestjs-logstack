@@ -56,6 +56,9 @@ export class LogStackService {
       entries: [entry],
     };
 
+    // Debug: Log what we're sending
+    console.log('🔍 Sending to LogStack:', JSON.stringify(request, null, 2));
+
     const maxRetries = this.config.retryAttempts || 3;
     const retryDelays = this.config.retryDelayMs || [1000, 2000, 4000];
 
@@ -93,6 +96,7 @@ export class LogStackService {
 
     if (this.config.fallbackToConsole !== false) {
       console.error('LogStack failed:', error.message);
+      console.error('Error details:', error.response?.data || 'No response data');
       console.log(`[${entry.level}] ${entry.message}`, entry.metadata);
     }
   }
