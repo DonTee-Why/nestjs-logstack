@@ -1,6 +1,6 @@
 {
   "name": "@dontee-why/nestjs-logstack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NestJS integration package for LogStack centralized logging service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
