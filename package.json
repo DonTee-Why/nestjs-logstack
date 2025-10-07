@@ -39,9 +39,9 @@
     "rxjs": "^7.0.0"
   },
   "dependencies": {
-    "@dontee-why/nestjs-logstack": "^1.0.1",
     "@nestjs/axios": "^3.0.0",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "reflect-metadata": "^0.1.13"
   },
   "optionalDependencies": {
     "@nestjs/config": "^3.0.0",
