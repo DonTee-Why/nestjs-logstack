@@ -52,12 +52,13 @@ export class LogStackService {
 
   private async sendToLogStack(entry: LogEntry): Promise<void> {
     this.stats.totalLogs++;
+    
+    // Validate and normalize the entry for LogStack requirements
+    const normalizedEntry = this.normalizeLogEntry(entry);
+    
     const request: IngestRequest = {
-      entries: [entry],
+      entries: [normalizedEntry],
     };
-
-    // Debug: Log what we're sending
-    console.log('🔍 Sending to LogStack:', JSON.stringify(request, null, 2));
 
     const maxRetries = this.config.retryAttempts || 3;
     const retryDelays = this.config.retryDelayMs || [1000, 2000, 4000];
@@ -88,6 +89,35 @@ export class LogStackService {
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
+  }
+
+  private normalizeLogEntry(entry: LogEntry): LogEntry {
+    // Ensure service name is lowercase and matches LogStack pattern ^[a-z0-9-]+$
+    const normalizedService = entry.service.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+    
+    // Ensure environment is lowercase and matches LogStack pattern ^[a-z0-9-]+$
+    const normalizedEnv = entry.env.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+    
+    // Ensure timestamp is in RFC3339 format (convert to ISO string if needed)
+    const normalizedTimestamp = entry.timestamp.includes('T') 
+      ? entry.timestamp 
+      : new Date(entry.timestamp).toISOString();
+    
+    // Filter labels to only include allowed keys
+    const allowedLabelKeys = new Set(['service', 'env', 'level', 'schema_version', 'region', 'tenant']);
+    const normalizedLabels = entry.labels 
+      ? Object.fromEntries(
+          Object.entries(entry.labels).filter(([key]) => allowedLabelKeys.has(key))
+        )
+      : undefined;
+    
+    return {
+      ...entry,
+      service: normalizedService,
+      env: normalizedEnv,
+      timestamp: normalizedTimestamp,
+      labels: normalizedLabels,
+    };
   }
 
   private handleLogError(error: any, entry: LogEntry): void {

@@ -45,9 +45,8 @@ export class LogStackInterceptor implements NestInterceptor {
       service: this.config.serviceName,
       env: this.config.environment,
       labels: {
-        ...this.config.defaultLabels,
-        method: request.method,
-        endpoint: request.route?.path || request.url,
+        service: this.config.defaultLabels?.service || this.config.serviceName,
+        env: this.config.environment,
       },
       metadata: {
         url: request.url,
@@ -56,6 +55,7 @@ export class LogStackInterceptor implements NestInterceptor {
         duration,
         userAgent: request.headers['user-agent'],
         ip: request.ip,
+        endpoint: request.route?.path || request.url,
         ...(error && { error: error.message }),
       },
       trace_id: request.headers['x-trace-id'],
