@@ -53,10 +53,13 @@ export class LogStackLogger extends Logger {
       service: this.config.serviceName,
       env: this.config.environment,
       labels: {
-        ...this.config.defaultLabels,
+        service: this.config.defaultLabels?.service || this.config.serviceName,
+        env: this.config.environment,
+      },
+      metadata: {
+        ...(metadata || {}),
         ...(context && { context }),
       },
-      metadata: metadata || {},
     };
 
     // Extract trace information if available (from DataDog or other tracing)
