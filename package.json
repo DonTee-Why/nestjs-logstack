@@ -1,6 +1,6 @@
 {
   "name": "@dontee-why/nestjs-logstack",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NestJS integration package for LogStack centralized logging service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,10 +39,8 @@
     "rxjs": "^7.8.2"
   },
   "dependencies": {
-    "@dontee-why/nestjs-logstack": "^1.0.1",
     "@nestjs/axios": "^4.0.1",
-    "axios": "^1.13.5",
-    "reflect-metadata": "^0.1.13"
+    "axios": "^1.13.5"
   },
   "optionalDependencies": {
     "@nestjs/config": "^4.0.2",
